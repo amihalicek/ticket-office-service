@@ -1,0 +1,26 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="load_common_data"  author="amihalicek">
+        <loadData file="../csv-files/city.csv" tableName="city"
+                  relativeToChangelogFile="true">
+            <column name="name" type="STRING"/>
+            <column name="postal_code" type="STRING"/>
+        </loadData>
+        <loadData file="../csv-files/line.csv" tableName="line"
+                  relativeToChangelogFile="true">
+            <column name="origin_city_id" type="STRING"/>
+            <column name="destination_city_id" type="STRING"/>
+            <column name="code" type="STRING"/>
+            <column name="price" type="STRING"/>
+        </loadData>
+        <loadData file="../csv-files/ticket.csv" tableName="ticket"
+                  relativeToChangelogFile="true">
+            <column name="line_id" type="STRING"/>
+            <column name="purchase_time" type="STRING"/>
+            <column name="price_paid" type="STRING"/>
+            <column name="seat_number" type="STRING"/>
+            <column name="passenger_name" type="STRING"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

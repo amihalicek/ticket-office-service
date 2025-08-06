@@ -13,6 +13,7 @@ public class TicketConverter {
         dto.setId(ticket.getId());
         dto.setLineName(ticket.getLine().getInfo());
         dto.setPassengerName(ticket.getPassengerName());
+        dto.setSeatNumber(ticket.getSeatNumber());
         dto.setPricePaid(ticket.getPricePaid());
         dto.setPurchaseTime(ticket.getPurchaseTime());
         return dto;

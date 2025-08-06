@@ -2,10 +2,13 @@ package hr.abysalto.ticket_office_service.line.entity;
 
 import hr.abysalto.ticket_office_service.city.entity.City;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 
 import java.math.BigDecimal;
 
@@ -14,16 +17,22 @@ public class Line {
 
     @Id
     @GeneratedValue
+    @Column(name="id", nullable = false, unique = true)
+    @SequenceGenerator(name = "line_seq", sequenceName = "line_id_seq", allocationSize = 1)
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name="origin_city_id")
     private City origin;
 
     @ManyToOne
+    @JoinColumn(name="destination_city_id")
     private City destination;
 
+    @Column(name = "code")
     private String code;
 
+    @Column(name = "price")
     private BigDecimal price;
 
     public String getInfo() {

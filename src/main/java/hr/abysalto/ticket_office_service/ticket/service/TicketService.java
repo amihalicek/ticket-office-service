@@ -18,6 +18,11 @@ public class TicketService {
 
     private TicketConverter ticketConverter;
 
+    public TicketService(TicketRepository ticketRepository, TicketConverter ticketConverter) {
+        this.ticketRepository = ticketRepository;
+        this.ticketConverter = ticketConverter;
+    }
+
     public List<TicketListDto> findAllTickets() {
         return ticketRepository.findAll().stream().map(ticketConverter::toTicketListDto).collect(Collectors.toList());
     }

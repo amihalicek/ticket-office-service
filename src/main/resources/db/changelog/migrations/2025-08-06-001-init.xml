@@ -23,7 +23,8 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="ticket_id_pk"/>
             </column>
             <column name="line_id" type="INTEGER"/>
-            <column name="purchaseTime" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="purchase_time" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="passenger_name" type="VARCHAR(128)"/>
             <column name="price_paid" type="DECIMAL" />
             <column name="seat_number" type="VARCHAR(32)"/>
         </createTable>
