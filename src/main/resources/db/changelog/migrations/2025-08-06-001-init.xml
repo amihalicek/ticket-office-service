@@ -1,0 +1,37 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="amihalicek" id="1728380646166-1">
+        <createTable tableName="city">
+            <column name="id" type="SERIAL" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="city_id_pk"/>
+            </column>
+            <column name="name" type="VARCHAR(128)"/>
+            <column name="postal_code"  type="VARCHAR(128)"/>
+        </createTable>
+        <createTable tableName="line">
+            <column name="id" type="SERIAL" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="line_id_pk"/>
+            </column>
+            <column name="origin_city_id" type="INTEGER"/>
+            <column name="destination_city_id" type="INTEGER"/>
+            <column name="code" type="VARCHAR(64)"/>
+            <column name="price" type="DECIMAL" />
+        </createTable>
+        <createTable tableName="ticket">
+            <column name="id" type="SERIAL" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="ticket_id_pk"/>
+            </column>
+            <column name="line_id" type="INTEGER"/>
+            <column name="purchaseTime" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="price_paid" type="DECIMAL" />
+            <column name="seat_number" type="VARCHAR(32)"/>
+        </createTable>
+        <addForeignKeyConstraint baseColumnNames="origin_city_id" baseTableName="line" constraintName="line_origin_city_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="city" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="destination_city_id" baseTableName="line" constraintName="line_destination_city_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="city" validate="true"/>
+        <addForeignKeyConstraint baseColumnNames="line_id" baseTableName="ticket" constraintName="ticket_line_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="line" validate="true"/>
+        <createSequence sequenceName="line_id_seq" incrementBy="1" startValue="1"/>
+        <createSequence sequenceName="city_id_seq" incrementBy="1" startValue="1"/>
+        <createSequence sequenceName="ticket_id_seq" incrementBy="1" startValue="1"/>
+    </changeSet>
+</databaseChangeLog>
