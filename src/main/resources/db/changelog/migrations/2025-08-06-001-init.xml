@@ -31,8 +31,8 @@
         <addForeignKeyConstraint baseColumnNames="origin_city_id" baseTableName="line" constraintName="line_origin_city_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="city" validate="true"/>
         <addForeignKeyConstraint baseColumnNames="destination_city_id" baseTableName="line" constraintName="line_destination_city_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="city" validate="true"/>
         <addForeignKeyConstraint baseColumnNames="line_id" baseTableName="ticket" constraintName="ticket_line_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="line" validate="true"/>
-        <createSequence sequenceName="line_id_seq" incrementBy="1" startValue="1"/>
-        <createSequence sequenceName="city_id_seq" incrementBy="1" startValue="1"/>
-        <createSequence sequenceName="ticket_id_seq" incrementBy="1" startValue="1"/>
+        <createSequence sequenceName="line_id_seq" incrementBy="1" startValue="100"/>
+        <createSequence sequenceName="city_id_seq" incrementBy="1" startValue="100"/>
+        <createSequence sequenceName="ticket_id_seq" incrementBy="1" startValue="100"/>
     </changeSet>
 </databaseChangeLog>
